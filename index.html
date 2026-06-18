@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importation des icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="actif">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur text-center">
+        <h1>Bienvenue sur mon Portfolio</h1>
+        <p class="introduction" style="border:none; text-align:center; max-width: 800px; margin-left: auto; margin-right: auto;">Étudiant en BUT GEII, passionné par l'électronique, l'automatisme et la conception de systèmes.</p>
+        
+        <img src="iut.png" alt="Illustration de mes projets" style="width: 100%; max-width: 700px; height: 300px; object-fit: cover; border-radius: 12px; margin: 20px 0; box-shadow: var(--ombre-legere);">
+        
+        <p style="margin-bottom: 30px;">Découvrez à travers ce site mes compétences techniques, mes projets de formation ainsi que mes réalisations personnelles.</p>
+        
+        <div>
+            <a href="profil.html" style="background-color: var(--couleur-primaire); color: white; padding: 12px 25px; text-decoration: none; border-radius: 30px; margin: 10px; font-weight: 600; display: inline-block; transition: all 0.3s;">En savoir plus sur moi</a>
+            <a href="competences.html" style="background-color: var(--couleur-secondaire); color: white; padding: 12px 25px; text-decoration: none; border-radius: 30px; margin: 10px; font-weight: 600; display: inline-block; transition: all 0.3s;">Voir mes compétences</a>
+        </div>
+
+        <!-- SECTION : ACTUALITÉS -->
+        <section class="section-actualites">
+            <h2 class="titre-actu">
+                <i class="fa-solid fa-satellite-dish icone-pulse"></i> En direct de mes projets
+            </h2>
+            
+            <div class="liste-notifications">
+
+                <!-- Actu 1 : Choix de parcours (Renvoie vers electronique.html) -->
+                <a class="notification" style="border-left-color: #8b5cf6;">
+                    <div class="notif-icone" style="background-color: #ede9fe; color: #8b5cf6;"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="notif-contenu">
+                        <span class="notif-date">Orientation 2ème année</span>
+                        <h3 class="notif-titre">Choix de parcours : ESE (Électronique)</h3>
+                        <p class="notif-desc">Ayant particulièrement apprécié la conception et les manipulations en électronique cette année, j'ai décidé de m'orienter vers le parcours ESE pour la suite de mon BUT.</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right notif-fleche"></i>
+                </a>
+                
+                <!-- Actu 2 : Kart à hélice (Renvoie vers sae.html) -->
+                <a href="sae.html" class="notification">
+                    <div class="notif-icone"><i class="fa-solid fa-wrench"></i></div>
+                    <div class="notif-contenu">
+                        <span class="notif-date">Dernière mise à jour : Récemment</span>
+                        <h3 class="notif-titre">SAE : Kart à hélice</h3>
+                        <p class="notif-desc">Le projet 3 est actuellement en phase de vérification (dimensionnement mécanique et tests moteur).</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right notif-fleche"></i>
+                </a>
+
+                <!-- Actu 3 : SafeBaby (Renvoie vers du-tss.html) -->
+                <a href="sae.html" class="notification" style="border-left-color: #13dbe2;">
+                    <div class="notif-icone" style="background-color: #d1fae5; color: #13dbe2;"><i class="fa-solid fa-baby"></i></div>
+                    <div class="notif-contenu">
+                        <span class="notif-date">En cours de développement</span>
+                        <h3 class="notif-titre">Projet Santé : Sens BéBé</h3>
+                        <p class="notif-desc">L'architecture du boîtier intelligent avance. Début de la modélisation sous CATIA.</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right notif-fleche"></i>
+                </a>
+
+                <a href="projets-perso.html" class="notification" style="border-left-color: #3b3838;">
+                    <div class="notif-icone" style="background-color: #fee2e2; color: #333030;">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div class="notif-contenu">
+                        <span class="notif-date">Nouveau Projet</span>
+                        <h3 class="notif-titre">Projets personnels</h3>
+                        <p class="notif-desc">Réparation Controller Scooter : Le boîtier est enfin ouvert !</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right notif-fleche"></i>
+                </a>
+
+                <a href="projets-perso.html" class="notification" style="border-left-color: #df6c0e;">
+                    <div class="notif-icone" style="background-color: #fef3c7; color: #df6c0e;">
+                        <i class="fa-solid fa-running"></i>
+                    </div>
+                    <div class="notif-contenu">
+                        <span class="notif-date">Nouvel Objectif Atteint</span>
+                        <h3 class="notif-titre">Projets personnels</h3>
+                        <p class="notif-desc">Course à pied : Premier 10km réalisé en 1h17m23s, le chemin est encore loin !</p>
+                    </div>
+                    <i class="fa-solid fa-chevron-right notif-fleche"></i>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

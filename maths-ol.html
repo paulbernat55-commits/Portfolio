@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths OL - Mes Compétences</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anime-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- EN-TÊTE : Bouton à gauche et Titre centré au milieu --- */
+        .header-projet {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .header-projet .bouton-retour {
+            position: absolute;
+            left: 0;
+        }
+
+        .header-projet h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* --- BLOC INTRO (Image à gauche, Infos à droite) --- */
+        .intro-projet {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .intro-image {
+            flex: 1;
+        }
+
+        .intro-image .image-projet-large {
+            margin-bottom: 0;
+        }
+
+        .projet-info-cles {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+        }
+
+        .projet-info-cles ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left !important;
+        }
+
+        .projet-info-cles li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projet-info-cles li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- DESIGN DES BLOCS DE TEXTE --- */
+        .bloc-texte {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .bloc-texte p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bloc-texte p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- TAGS (LOGICIELS) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- DOCUMENTS (BOUTONS) --- */
+        .documents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .doc-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- IMAGES ET MEDIAS --- */
+        .image-projet-large {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .galerie-media img, .galerie-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESPONSIVE : Pour les écrans de smartphones --- */
+        @media (max-width: 768px) {
+            .header-projet {
+                flex-direction: column;
+                position: static;
+                gap: 15px;
+            }
+            .header-projet .bouton-retour {
+                position: static;
+            }
+            .header-projet h1 {
+                text-align: center;
+            }
+            .intro-projet {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html"class="actif">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        <a href="competences.html" class="bouton-retour">← Retour aux compétences</a>
+        
+        <h1>Maths OL (Outils Logiciels)</h1>
+        <p class="introduction">Application des mathématiques à l'ingénierie grâce aux outils informatiques de traitement de données. Cette matière m'a permis de développer une excellente maîtrise d'Excel pour modéliser et analyser des systèmes complexes.</p>
+
+        <section class="section-detail">
+            <h2>Compétences Développées & Maîtrise d'Excel</h2>
+            <ul>
+                <li><strong>Maîtrise avancée d'Excel :</strong> Capacité à structurer des feuilles de calcul complexes, à croiser des données et à générer des graphiques d'analyse dynamiques et précis.</li>
+                <li><strong>Traitement de données techniques :</strong> Automatisation des calculs d'ingénierie (calcul du gain, de la phase, et tracé de diagrammes de Bode).</li>
+                <li><strong>Modélisation et Résolution :</strong> Résolution de problèmes mathématiques appliqués (systèmes d'équations) par le calcul numérique et matriciel.</li>
+                <li><strong>Analyse de données globales :</strong> Suivi et gestion de données quantitatives (comme l'analyse d'un chiffre d'affaires) grâce aux fonctions logiques et statistiques.</li>
+            </ul>
+        </section>
+
+        <section class="section-detail">
+            <h2>Documents livrables</h2>
+            <div class="documents-grid">
+                <a href="excel.xlsx" target="_blank" class="doc-btn">📄 Exercice Excel</a>
+            </div>
+        </div>
+
+        <section class="section-detail">
+            <h2>Aperçu de mes travaux sur Excel</h2>
+            
+            <div class="galerie-media">
+                
+                <div class="conteneur-image">
+                    <img src="diagrammebode.png" alt="Diagramme de Bode">
+                    <div class="description-image">Tracé complet d'un diagramme de Bode</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="gain.png" alt="Calcul du gain">
+                    <div class="description-image">Calculs et courbe de gain</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="phase.png" alt="Calcul de la phase">
+                    <div class="description-image">Calculs et courbe de phase</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="asymptote.png" alt="Tracé des asymptotes">
+                    <div class="description-image">Modélisation des asymptotes</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="système.png" alt="Résolution de système">
+                    <div class="description-image">Résolution d'un système mathématique</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="chiffreaffaire.png" alt="Analyse du chiffre d'affaires">
+                    <div class="description-image">Tableau d'analyse du chiffre d'affaires</div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

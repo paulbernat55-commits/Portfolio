@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Compétences - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anime-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- EN-TÊTE : Bouton à gauche et Titre centré au milieu --- */
+        .header-projet {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .header-projet .bouton-retour {
+            position: absolute;
+            left: 0;
+        }
+
+        .header-projet h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* --- BLOC INTRO (Image à gauche, Infos à droite) --- */
+        .intro-projet {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .intro-image {
+            flex: 1;
+        }
+
+        .intro-image .image-projet-large {
+            margin-bottom: 0;
+        }
+
+        .projet-info-cles {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+        }
+
+        .projet-info-cles ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left !important;
+        }
+
+        .projet-info-cles li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projet-info-cles li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- DESIGN DES BLOCS DE TEXTE --- */
+        .bloc-texte {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .bloc-texte p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bloc-texte p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- TAGS (LOGICIELS) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- DOCUMENTS (BOUTONS) --- */
+        .documents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .doc-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- IMAGES ET MEDIAS --- */
+        .image-projet-large {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .galerie-media img, .galerie-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESPONSIVE : Pour les écrans de smartphones --- */
+        @media (max-width: 768px) {
+            .header-projet {
+                flex-direction: column;
+                position: static;
+                gap: 15px;
+            }
+            .header-projet .bouton-retour {
+                position: static;
+            }
+            .header-projet h1 {
+                text-align: center;
+            }
+            .intro-projet {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html" class="actif">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur">
+        <h1>Référentiel & Compétences du BUT GEII</h1>
+        
+        <p class="introduction">
+            En tant qu'étudiant à l'<strong>IUT de Bordeaux (site de Gradignan)</strong>, mon parcours Portfolio est régi par un référentiel simplifié, axé sur l'acquisition de compétences de base concrètes à valider à l'aide de preuves durant les 6 semestres.
+        </p>
+
+        <section class="section-detail">
+            <h2>Évolution du Système de Compétences</h2>
+            <div class="bloc-texte">
+                <p>Le modèle d'évaluation a évolué vers une approche directe et concrète, centrée sur la validation de nos savoir-faire techniques et professionnels.</p>
+                <p>De plus, <strong>une compétence supplémentaire</strong> a été ajoutée aux 4 compétences d'origine pour valoriser pleinement nos aptitudes à piloter et mener à bien un projet complexe. Cette 5ème compétence est nommée <strong>MANAGER</strong> dans notre Portfolio ; une dimension essentielle qui prendra tout son sens lors de mes futurs stages ou périodes d'alternance.</p>
+                
+                <p>Voici l'ensemble des axes du référentiel :</p>
+                <ul>
+                    <li><strong>CONCEVOIR :</strong> Étude technique et schématisation de solutions.</li>
+                    <li><strong>VÉRIFIER :</strong> Mesures, tests de conformité et validation.</li>
+                    <li><strong>MAINTENIR :</strong> Suivi, dépannage et sûreté de fonctionnement.</li>
+                    <li><strong>INTÉGRER :</strong> Déploiement de systèmes (Énergie, Automatismes, Embarqué).</li>
+                    <li><strong>MANAGER :</strong> Gestion de projet, d'équipe, de budget et communication technique.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-detail">
+            <h2>État d'avancement de mon Portfolio</h2>
+            <div class="bloc-texte" style="text-align: center;">
+                <p>À ce stade de ma formation (Semestre 1 & 2), je valide actuellement <strong>2 compétences sur les 5</strong> attendues en fin de cursus grâce à mes premières briques de <a href="sae.html" class="lien-texte">projets de groupe</a>.</p>
+                
+                <div style="width: 100%; background-color: #eeeeee; border-radius: 20px; height: 35px; margin: 20px 0; border: 1px solid #30b57e; overflow: hidden;">
+                    <div style="width: 40%; background-color: #30b57e; height: 100%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: bold; font-family: 'Montserrat', sans-serif;">
+                        40% (2 / 5 validées)
+                    </div>
+                </div>
+                <p style="font-size: 0.95em; color: #666666;">Validations ciblées en priorité : <strong>CONCEVOIR</strong> & <strong>VÉRIFIER</strong> (via les projets Rafale Lumineux et Thermomètre de Bain).</p>
+            </div>
+        </section>
+
+        <section class="section-detail">
+            <h2>Graphe du Référentiel GEII Bordeaux-Gradignan</h2>
+            <div class="conteneur-graphe">
+                <img src="graphe.png" alt="Graphe du référentiel compétences BUT GEII">
+                <div class="description-image">Graphe officiel simplifié complété par les livrables techniques et preuves</div>
+            </div>
+        </section>
+
+        <section class="section-detail">
+            <h2>Détail des matières enseigné</h2>
+            <section class="bloc-texte">
+                <ul>
+                    <li><strong>Anglais :</strong> Communication internationale, rédaction de documentations techniques, présentations orales de projets et étude de fiches composants (datasheets).</li>
+                    <li><strong>Maths TD/TP :</strong> Traitement de données (Excel, MATLAB), calculs de circuits (complexes, matrices), transformées pour le traitement du signal et modélisation de systèmes.</li>
+                    <li><strong>Automatisme TD/TP :</strong> Programmation d'automates programmables industriels (API) sur TIA Portal, modélisation de systèmes (Grafcet, Ladder, GEMMA) et contrôle de bras robotisés.</li>
+                    <li><strong>Énergie TD/TP :</strong> Étude et déploiement de systèmes électriques (courant monophasé et triphasé), câblage sur WinRelais, gestion de moteurs, habilitation électrique et distribution d'énergie.</li>
+                    <li><strong>Électronique TD/TP :</strong> Saisie de schémas et routage de cartes de circuits imprimés (PCB) sur Proteus (ISIS/ARES), câblage sur platine d'essai, prototypage et soudure de composants.</li>
+                    <li><strong>Informatique TD/TP :</strong> Développement de programmes en langage C ou C++, programmation de microcontrôleurs (Arduino, STM32) et gestion d'entrées/sorties pour les systèmes embarqués.</li>
+                    <li><strong>Physique :</strong> Analyse de circuits en régime transitoire et sinusoïdal, utilisation des appareils de mesure (oscilloscope, multimètre) et étude des capteurs (température, luminosité).</li>
+                    <li><strong>Culture Communication :</strong> Rédaction de dossiers de synthèse professionnelle (DDC, DDV, DDF), conduite de réunions, gestion de projets en équipe et préparation aux soutenances.</li>
+                </ul>                
+            </section>
+            <div class="grille-competences">
+                
+                <a href="automatisme.html" class="carte">
+                    <h2>Automatisme TP</h2>
+                    <div class="infobulle">
+                        <p><strong>Logiciels :</strong> TIA Portal V18.</p>
+                        <p><strong>Pratique :</strong> Machine autonome, programmation de bras robot.</p>
+                        <p><strong>Méthodes :</strong> Grafcet, Ladder, GEMMA.</p>
+                    </div>
+                </a>
+
+                <a href="energie.html" class="carte">
+                    <h2>Énergie TP</h2>
+                    <div class="infobulle">
+                        <p><strong>Pratique :</strong> Utilisation de maquettes (triphasé, monophasé).</p>
+                        <p><strong>Outils :</strong> Logiciel Winrelais.</p>
+                        <p><strong>Certification :</strong> Habilitation électrique.</p>
+                    </div>
+                </a>
+
+                <a href="maths-ol.html" class="carte">
+                    <h2>Maths TP</h2>
+                    <div class="infobulle">
+                        <p><strong>Outils :</strong> Excel, traitement de formules.</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

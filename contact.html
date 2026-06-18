@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html" class="actif">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur">
+        
+        <div class="entete-contact">
+            <h1>Travaillons ensemble</h1>
+            <p>Une question, une proposition de projet ou une opportunité professionnelle ? N'hésitez pas à me contacter via le formulaire ou directement sur mes réseaux.</p>
+        </div>
+
+        <div class="grille-contact">
+            
+            <div class="coordonnees-liste">
+                
+                <a href="mailto:paul.bernat-@u-bordeaux.fr" class="carte-info">
+                    <div class="icone-cercle"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h3>E-mail</h3>
+                        <p>paul.bernat-@u-bordeaux.fr</p>
+                    </div>
+                </a>
+
+                <a href="tel:+33695310717" class="carte-info">
+                    <div class="icone-cercle"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <h3>Téléphone</h3>
+                        <p>06 95 31 07 17</p>
+                    </div>
+                </a>
+
+                <div class="carte-info" style="cursor: default;">
+                    <div class="icone-cercle"><i class="fa-solid fa-location-dot"></i></div>
+                    <div>
+                        <h3>Localisation</h3>
+                        <p>Région de Bordeaux / Gradignan</p>
+                    </div>
+                </div>
+
+                <a href="https://linkedin.com/in/paul-bernat-2125553ba" target="_blank" class="carte-info">
+                    <div class="icone-cercle"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <p>Mon réseau professionnel</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="boite-formulaire">
+                <h2><i class="fa-solid fa-paper-plane" style="color: var(--couleur-primaire); margin-right: 10px;"></i> Envoyez-moi un message</h2>
+                
+                <form action="https://formspree.io/f/xkoalggy" method="POST" class="formulaire-contact">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <input type="text" name="Nom" placeholder="Votre nom" required>
+                        <input type="text" name="Prenom" placeholder="Votre prénom" required>
+                    </div>
+                    
+                    <input type="email" name="Email" placeholder="Votre adresse e-mail" required>
+                    
+                    <input type="text" name="Sujet" placeholder="Sujet de votre message (ex: Offre de stage)" required>
+                    
+                    <textarea name="Message" rows="6" placeholder="Écrivez votre message ici..." required></textarea>
+                    
+                    <button type="submit">
+                        Envoyer le message <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

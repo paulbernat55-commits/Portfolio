@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 3 : Kart à Hélice</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anime-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- EN-TÊTE : Bouton à gauche et Titre centré au milieu --- */
+        .header-projet {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .header-projet .bouton-retour {
+            position: absolute;
+            left: 0;
+        }
+
+        .header-projet h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* --- BLOC INTRO (Image à gauche, Infos à droite) --- */
+        .intro-projet {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .intro-image {
+            flex: 1;
+        }
+
+        .intro-image .image-projet-large {
+            margin-bottom: 0;
+        }
+
+        .projet-info-cles {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+        }
+
+        .projet-info-cles ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left !important;
+        }
+
+        .projet-info-cles li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projet-info-cles li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- DESIGN DES BLOCS DE TEXTE --- */
+        .bloc-texte {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .bloc-texte p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bloc-texte p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- TAGS (LOGICIELS) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- DOCUMENTS (BOUTONS) --- */
+        .documents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .doc-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- IMAGES ET MEDIAS --- */
+        .image-projet-large {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .galerie-media img, .galerie-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESPONSIVE : Pour les écrans de smartphones --- */
+        @media (max-width: 768px) {
+            .header-projet {
+                flex-direction: column;
+                position: static;
+                gap: 15px;
+            }
+            .header-projet .bouton-retour {
+                position: static;
+            }
+            .header-projet h1 {
+                text-align: center;
+            }
+            .intro-projet {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html"class="actif">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        
+        <h1>SAE : Situations d'Apprentissage et d'Évaluation</h1>
+        <p class="introduction">Cette catégorie regroupe les projets de groupe transversaux menés tout au long de l'année, mettant l'accent sur la gestion de projet, la conception technique et le travail en équipe.
+            
+        </p>
+
+        <section class="section-detail">
+            <h2>Les Projets Réalisés</h2>
+            <div class="grille-projets">
+                
+            <a href="projet-rafale.html" class="projet-bloc lien-projet" style="text-decoration: none; color: inherit;">
+                <h3>Projet 1 : Rafale Lumineux</h3>
+                <p>Conception d'un système sonore et lumineux pour un planeur.</p>
+                <img src="rafale.png" alt="Projet Rafale Lumineux" class="image-projet">
+                
+                <div class="conteneur-tags">
+                    <span class="tag-mini"><i class="fa-solid fa-fan"></i>Durée : 9 séances (18h)</span>
+                    <span class="tag-mini"><i class="fa-solid fa-wifi"></i>Equipe : 2 personnes</span>
+                    <span class="tag-mini"><i class="fa-solid fa-car-battery"></i> Semestre : 1</span>
+                </div>
+                
+                <span class="bouton-voir-plus">Voir les détails →</span>
+            </a>
+
+            <a href="projet-thermometre.html" class="projet-bloc lien-projet" style="text-decoration: none; color: inherit;">
+                <h3>Projet 2 : Thermomètre de Bain</h3>
+                <p>Création d'un thermomètre de bain pour nouveaux-nés.</p>
+                <img src="tdb.png" alt="Projet Thermomètre de bain" class="image-projet">
+                
+                <div class="conteneur-tags">
+                    <span class="tag-mini"><i class="fa-solid fa-fan"></i>Durée : 20 séances (40h)</span>
+                    <span class="tag-mini"><i class="fa-solid fa-wifi"></i>Equipe : 4 personnes</span>
+                    <span class="tag-mini"><i class="fa-solid fa-car-battery"></i> Semestre : 1</span>
+                </div>
+                
+                <span class="bouton-voir-plus">Voir les détails →</span>
+            </a>
+
+            <a href="projet-kart.html" class="projet-bloc lien-projet" style="text-decoration: none; color: inherit;">
+                <h3>Projet 3 : Kart à Hélice</h3>
+                <p>Développement d'un kart à hélice radiocommandé en intérieur.</p>
+                <img src="kart.png" alt="Projet Kart à hélice" class="image-projet">
+                
+                <div class="conteneur-tags">
+                    <span class="tag-mini"><i class="fa-solid fa-fan"></i>Durée : 29 séances (58h)</span>
+                    <span class="tag-mini"><i class="fa-solid fa-wifi"></i>Equipe : 8 personnes</span>
+                    <span class="tag-mini"><i class="fa-solid fa-car-battery"></i> Semestre : 2</span>
+                </div>
+                
+                <span class="bouton-voir-plus">Voir les détails →</span>
+            </a>
+
+            </div>
+        </section>
+
+        <section class="section-detail">
+
+            <h2>Compétences Techniques & Méthodologiques</h2>
+
+            <ul>
+
+                <li><strong>Conception électronique :</strong> Utilisation avancée du logiciel ISIS (Proteus) pour la saisie de schémas et le routage.</li>
+
+                <li><strong>Fabrication :</strong> Construction de cartes électroniques, soudure précise au fer et à l'étain.</li>
+
+                <li><strong>Gestion documentaire :</strong> Rédaction rigoureuse de documents techniques (DDC - Dossier de Conception, DDV - Dossier de Validation, DDF - Dossier de Fabrication).</li>
+
+                <li><strong>Planification :</strong> Suivi de projet et comptes rendus réguliers par mail en respectant un planning strict.</li>
+
+            </ul>
+
+        </section> 
+
+    </main>
+    <main class="conteneur-detail">
+        
+        <h1>DU TSS (Diplome Universitaire - Technologie au Service de la Santé)</h1>
+        <p class="introduction">Une formation orientée vers le domaine de la santé, alliant compétences techniques et projets collaboratifs interdisciplinaires.</p>
+
+        <section class="section-detail">
+            <h2>Outils & Coopération</h2>
+            <ul>
+                <li><strong>Conception 3D :</strong> Apprentissage et modélisation de pièces et de structures sur le logiciel industriel <strong>CATIA</strong>.</li>
+                <li><strong>Projets Inter-BUT :</strong> Travail en synergie avec des étudiants d'autres spécialités pour croiser les compétences et répondre à des problématiques médicales réelles.</li>
+            </ul>
+        </section>
+
+        <section class="section-detail">
+            <h2>Projet : Sens BeBe</h2>
+            <div class="projet-focus">
+                <h3>Le concept Sens BeBe</h3>
+                <p><strong>Sens BeBe</strong> est un boîtier intelligent actuellement en cours de développement, conçu pour surveiller l’environnement direct d’un nourrisson (température, humidité, qualité de l'air, etc.) afin de garantir sa sécurité et sa santé.</p>
+                <div class="grille-images-simples">
+                    <img src="Capture1.png" alt="Modélisation CATIA du boîtier" class="image-galerie">
+                    <img src="composant2.jpeg" alt="Prototype du projet SafeBaby" class="image-galerie">
+                </div>
+            </div>
+            <h2>Composant du Projet</h2>
+            <div class="galerie-media">
+                <!-- Remplace les liens par les chemins vers tes vraies photos/vidéos -->
+                
+                <!-- Exemple de photo -->
+                <div class="conteneur-image">
+                    <img src="arduino.jpg">
+                    <div class="description-image">Arduino MKR 1010 Wifi</div>
+                </div>
+                <div class="conteneur-image">
+                    <img src="ecran.jpg">
+                    <div class="description-image">Ecran Oled Grov</div>
+                </div>
+                <div class="conteneur-image">
+                    <img src="capteur-shield.jpg">
+                    <div class="description-image">Arduino MKR ENV Shield</div>
+                </div> 
+            </div>    
+            <div class="anime-section delay-3">
+                <h2>Documents livrables</h2>
+                <div class="documents-grid">
+                    <a href="CompteRendu.pdf" target="_blank" class="doc-btn">📄 Compte Rendu</a>
+                </div>
+            </div>
+            <h2>Galerie du Projet</h2>
+            <div class="galerie-media">
+                <div class="conteneur-image">
+                    <img src="test.png">
+                    <div class="description-image">Premier test du shield température</div>
+                </div>
+                <div class="conteneur-image">
+                    <img src="Capture1.png">
+                    <div class="description-image">Boitier complet</div>
+                </div>                      
+                <div class="conteneur-image">
+                    <img src="Capture3.png">
+                    <div class="description-image">Base : Pièce 1</div>
+                </div>       
+                <div class="conteneur-image">
+                    <img src="Capture4.png">
+                    <div class="description-image">Ouverture : Pièce 2</div>
+                </div>    
+                <div class="conteneur-image">
+                    <img src="Capture5.png">
+                    <div class="description-image">Couvercle : Pièce 3</div>
+                </div> 
+                <div class="conteneur-image">
+                    <img src="composant.jpeg">
+                    <div class="description-image">Composant relié</div>
+                </div>    
+                <div class="conteneur-image">
+                    <img src="composant2.jpeg">
+                    <div class="description-image">Prototype</div>
+                </div>                     
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
+

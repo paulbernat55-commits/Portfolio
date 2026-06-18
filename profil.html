@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importation des icônes FontAwesome pour embellir la page -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html"class="actif">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        
+        <div class="en-tete-profil">
+            <img src="profil.png" alt="Ma photo" class="photo-profil">
+            <div class="texte-profil" style="flex: 1; min-width: 300px;">
+                <h2>Paul Bernat</h2>
+                <div class="etiquette-statut">
+                    <i class="fa-solid fa-microchip"></i> Étudiant en BUT GEII
+                </div>
+                <p class="citation-profil">
+                    "Passionné par l'innovation, la conception électronique, l'entreprenariat et l'automatisme, j'aime donner vie à des systèmes complexes. Mon parcours allie rigueur scientifique et projets concrets, avec une forte volonté de m'impliquer dans des défis technologiques porteurs de sens.
+            </div>
+        </div>
+
+        <section class="section-detail">
+            <h2><i class="fa-solid fa-user-tie"></i> Mes Savoir-être</h2>
+            <p>Au-delà de mes compétences techniques, j'attache une grande importance à la méthode et au travail collaboratif :</p>
+            <div class="grille-savoir-etre">
+                <span class="badge-skill"><i class="fa-solid fa-people-group"></i> Esprit d'équipe</span>
+                <span class="badge-skill"><i class="fa-solid fa-clipboard-check"></i> Rigueur & Organisation</span>
+                <span class="badge-skill"><i class="fa-solid fa-lightbulb"></i> Esprit d'innovation</span>
+                <span class="badge-skill"><i class="fa-solid fa-comments"></i> Communication technique</span>
+            </div>
+        </section>
+
+        <section class="section-detail">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Mon Parcours Scolaire</h2>
+            
+            <div class="frise-chronologique">
+                
+                <!-- Étape 1 : BUT GEII -->
+                <div class="etape-frise">
+                    <div class="icone-frise"><i class="fa-solid fa-laptop-code"></i></div>
+                    <span class="date-frise">2025 - 2026</span>
+                    <div class="contenu-frise">
+                        <h3>1ère année de BUT GEII</h3>
+                        <p>Apprentissage approfondi en génie électrique, automatisme, énergie et informatique industrielle.</p>
+                        <p><strong>Temps forts :</strong> Rédaction de dossiers techniques (DDC, DDV, DDF) et réalisation de multiples projets transversaux en équipe (Rafale lumineux, projet SafeBaby...).</p>
+                        <div class="lieu"><i class="fa-solid fa-location-dot"></i> Université de Bordeaux, site de Gradignan</div>
+                    </div>
+                </div>
+
+                <!-- Étape 2 : Baccalauréat -->
+                <div class="etape-frise">
+                    <div class="icone-frise"><i class="fa-solid fa-scroll"></i></div>
+                    <span class="date-frise">Juillet 2025</span>
+                    <div class="contenu-frise">
+                        <h3>Obtention du Baccalauréat Général</h3>
+                        <p><strong style="color: var(--couleur-primaire);">Mention Assez Bien.</strong></p>
+                        <p><strong>Spécialités de Terminale :</strong> Mathématiques et NSI (Numérique et Sciences Informatiques).</p>
+                        <div class="lieu"><i class="fa-solid fa-location-dot"></i> Lycée Général Jaufré Rudel</div>
+                    </div>
+                </div>
+
+                <!-- Étape 3 : Classe de Première -->
+                <div class="etape-frise">
+                    <div class="icone-frise"><i class="fa-solid fa-book-open"></i></div>
+                    <span class="date-frise">2023 - 2024</span>
+                    <div class="contenu-frise">
+                        <h3>Classe de Première Générale</h3>
+                        <p>Développement d'un solide socle scientifique.</p>
+                        <p><strong>Spécialités suivies :</strong> Mathématiques, Physique-Chimie, et NSI.</p>
+                        <div class="lieu"><i class="fa-solid fa-location-dot"></i> Lycée Général Jaufré Rudel</div>
+                    </div>
+                </div>
+
+                <!-- Étape 4 : Brevet -->
+                <div class="etape-frise">
+                    <div class="icone-frise"><i class="fa-solid fa-award"></i></div>
+                    <span class="date-frise">Juillet 2022</span>
+                    <div class="contenu-frise">
+                        <h3>Diplôme National du Brevet</h3>
+                        <p><strong style="color: var(--couleur-primaire);">Mention Très Bien.</strong></p>
+                        <div class="lieu"><i class="fa-solid fa-location-dot"></i> Collège Jacques Prévert</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <div style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #e2e8f0;">
+            <a href="cv.pdf" target="_blank" class="bouton-retour" style="font-size: 1.1em; padding: 15px 30px;">
+                <i class="fa-solid fa-file-pdf" style="margin-right: 10px;"></i> Télécharger mon CV (Format PDF)
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

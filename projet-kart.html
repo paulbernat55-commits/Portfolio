@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 3 : Kart à Hélice</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anime-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- EN-TÊTE : Bouton à gauche et Titre centré au milieu --- */
+        .header-projet {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .header-projet .bouton-retour {
+            position: absolute;
+            left: 0;
+        }
+
+        .header-projet h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* --- BLOC INTRO (Image à gauche, Infos à droite) --- */
+        .intro-projet {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .intro-image {
+            flex: 1;
+        }
+
+        .intro-image .image-projet-large {
+            margin-bottom: 0;
+        }
+
+        .projet-info-cles {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+        }
+
+        .projet-info-cles ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left !important;
+        }
+
+        .projet-info-cles li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projet-info-cles li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- DESIGN DES BLOCS DE TEXTE --- */
+        .bloc-texte {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .bloc-texte p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bloc-texte p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- TAGS (LOGICIELS) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- DOCUMENTS (BOUTONS) --- */
+        .documents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .doc-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- IMAGES ET MEDIAS --- */
+        .image-projet-large {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .galerie-media img, .galerie-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESPONSIVE : Pour les écrans de smartphones --- */
+        @media (max-width: 768px) {
+            .header-projet {
+                flex-direction: column;
+                position: static;
+                gap: 15px;
+            }
+            .header-projet .bouton-retour {
+                position: static;
+            }
+            .header-projet h1 {
+                text-align: center;
+            }
+            .intro-projet {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" >Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html"class="actif">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        
+        <div class="header-projet anime-section">
+            <a href="sae.html" class="bouton-retour">← Retour aux SAE</a>
+            <h1>Projet 3 : Kart à Hélice</h1>
+        </div>
+        
+        <section class="section-detail">
+            
+            <div class="intro-projet anime-section delay-1">
+                <div class="intro-image">
+                    <img src="kart.png" alt="Projet Kart à hélice" class="image-projet-large">
+                </div>
+                
+                <div class="projet-info-cles">
+                    <ul>
+                        <li><strong>Action :</strong> Infrarouges, Leds, Récepteur Infrarouge, Buzzer</li>
+                        <li><strong>Traitement :</strong> ATMEG328P, </li>
+                        <li><strong>Energie :</strong> Lipo 2S</li>
+                        <li><strong>Acquisition :</strong> Bouton Poussoir</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="anime-section delay-2">
+                <h2>Présentation du produit</h2>
+                <div class="bloc-texte">
+                    <p>Depuis les années 70, le modélisme connaît un vrai succès auprès des particuliers. Si, au début, ce loisir était réservé aux passionnés qui étaient prêts à passer de nombreuses heures pour maîtriser la technicité et les subtilités de la construction de leurs engins miniatures, depuis le début des années 2000, le modélisme évolue, se simplifie, et devient maintenant accessible à tous.</p>
+                    <p>Aujourd'hui, presque tous les moyens de locomotion grandeur nature ont été miniaturisés au moins une fois. L'entreprise Toy Corporation entreprend aujourd'hui de concevoir et de commercialiser en grande série un kart à hélice (version à hélice d'un kart). Toy Corporation opte stratégiquement de restreindre l'emploi du kart à une utilisation en intérieur (salon, véranda, salle de sport, gymnase...).</p>
+                    <p>Ainsi, la mécanique et la motorisation sont d'une taille et d'une puissance modérées. La transmission de données est une liaison infrarouge standard. Ceci permet ainsi d'optimiser les coûts (de développement et de production) et de proposer un produit « grand public » à un prix raisonnable et compétitif. Les coûts étaient aussi à surveiller pour ne pas dépasser les 160 euros TTC.</p>
+                </div>
+            </div>
+
+            <div class="anime-section delay-2">
+                <h2>Ma mission</h2>
+                <div class="bloc-texte">
+                    <p>En tant que coéquipier numéro 2, mon rôle s'est concentré sur la conception de la carte émetteur, qui sert de télécommande au kart. Lors de la phase du DDC, j'ai été chargé de développer l'intégralité des parties action et acquisition de cette télécommande. J'ai ensuite pris en charge sa fabrication physique, puis j'ai procédé aux phases de vérification de ces blocs d'action et d'acquisition directement sur la carte émetteur pour m'assurer que les ordres de pilotage étaient correctement traités et envoyés.</p>
+                </div>
+            </div>
+
+            <div class="anime-section delay-4">
+                <h2>Mon ressenti</h2>
+                <div class="bloc-texte">
+                    <p>Un projet plus conséquent où la dimension du travail en équipe a pris tout son sens, constituant une excellente mise en situation pour mon parcours futur. Sur le plan technique, j'ai trouvé incroyable de pouvoir créer la télécommande de A à Z. Découvrir que l'infrarouge permet de concevoir de véritables petits objets "connectés" a été particulièrement stimulant. Même si ce n'est qu'une première approche, c'est un fonctionnement concret qui me donnera de solides bases pour une multitude d'autres projets à l'avenir.</p>
+                </div>
+            </div>
+
+            <div class="anime-section delay-3">
+                <h2>Logiciels & Technologies utilisés</h2>
+                <div class="tags-container">
+                    <span class="tag">C++</span>
+                    <span class="tag">Proteus : ISIS, ARES</span>
+                    <span class="tag">Arduino INE</span>
+                    <span class="tag">Trame NEC</span>
+                </div>
+            </div>
+
+            <div class="anime-section delay-3">
+                <h2>Documents livrables</h2>
+                <div class="documents-grid">
+                    <a href="DDC_Kart.docx" target="_blank" class="doc-btn">📄 DDC</a>
+                    <a href="DDV_Kart.docx" target="_blank" class="doc-btn">📄 DDV</a>
+                    <a href="DDF_Kart.docx" target="_blank" class="doc-btn">📄 DDF</a>
+                    <a href="planningkart.xlsx" target="_blank" class="doc-btn">📅 Planning</a>
+                </div>
+            </div>
+
+            <div class="galerie-media">
+
+                <div class="conteneur-image">
+                    <video controls>
+                        <source src="vidéo.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    <div class="description-image">Extrait Course Kart</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6551.jpeg" alt="Description de l'image">
+                    <div class="description-image">Photo Kart en préparation</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6556.jpeg" alt="Description de l'image">
+                    <div class="description-image">Carte émetteur(télécommande)</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6557.jpeg" alt="Description de l'image">
+                    <div class="description-image">Structure du Kart (chassis)</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6558.jpeg" alt="Description de l'image">
+                    <div class="description-image">Kart proche de la ligne d'arrivé</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6559.jpeg" alt="Description de l'image">
+                    <div class="description-image">Première essai de pilotage</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6560.jpeg" alt="Description de l'image">
+                    <div class="description-image">Tour de piste pour faire le meilleur temps</div>
+                </div>
+
+                <div class="conteneur-image">
+                    <img src="IMG_6561.jpeg" alt="Description de l'image">
+                    <div class="description-image">Tour de piste pour faire le meilleur temps</div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

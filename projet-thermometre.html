@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2 : Thermomètre de Bain</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anime-section {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* --- EN-TÊTE : Bouton à gauche et Titre centré au milieu --- */
+        .header-projet {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .header-projet .bouton-retour {
+            position: absolute;
+            left: 0;
+        }
+
+        .header-projet h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        /* --- BLOC INTRO (Image à gauche, Infos à droite) --- */
+        .intro-projet {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .intro-image {
+            flex: 1;
+        }
+
+        .intro-image .image-projet-large {
+            margin-bottom: 0;
+        }
+
+        .projet-info-cles {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+        }
+
+        .projet-info-cles ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left !important;
+        }
+
+        .projet-info-cles li {
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projet-info-cles li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- DESIGN DES BLOCS DE TEXTE --- */
+        .bloc-texte {
+            background-color: #f8f9fa;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #30b57e;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .bloc-texte p {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .bloc-texte p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- TAGS (LOGICIELS) --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .tag {
+            background-color: #007BFF;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tag:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        /* --- DOCUMENTS (BOUTONS) --- */
+        .documents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .doc-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* --- IMAGES ET MEDIAS --- */
+        .image-projet-large {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .galerie-media img, .galerie-media video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESPONSIVE : Pour les écrans de smartphones --- */
+        @media (max-width: 768px) {
+            .header-projet {
+                flex-direction: column;
+                position: static;
+                gap: 15px;
+            }
+            .header-projet .bouton-retour {
+                position: static;
+            }
+            .header-projet h1 {
+                text-align: center;
+            }
+            .intro-projet {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" >Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html"class="actif">Projets formation</a></li>
+            <li><a href="projets-perso.html">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        
+        <div class="header-projet anime-section">
+            <a href="sae.html" class="bouton-retour">← Retour aux SAE</a>
+            <h1>Projet 2 : Thermomètre de Bain</h1>
+        </div>
+        
+        <section class="section-detail">
+            
+            <div class="intro-projet anime-section delay-1">
+                <div class="intro-image">
+                    <img src="tdb.png" alt="Projet Thermomètre de bain" class="image-projet-large">
+                </div>
+                
+                <div class="projet-info-cles">
+                    <ul>
+                        <li><strong>Action :</strong> Leds</li>
+                        <li><strong>Traitement :</strong> AOP</li>
+                        <li><strong>Energie :</strong> Lipo 2S</li>
+                        <li><strong>Acquisition :</strong> Capteur Température</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="anime-section delay-2">
+                <h2>Présentation du produit à développer</h2>
+                <div class="bloc-texte">
+                    <p>Une entreprise de produits pour nouveaux-nés souhaite élargir sa gamme de produits. Elle souhaite aujourd'hui étendre son catalogue vers une gamme d'accessoires pour le bain. C'est ainsi qu'elle entreprend de vous faire concevoir un thermomètre de bain dont les caractéristiques principales sont :</p>
+                    <ul>
+                        <li>Détection d'une eau trop froide ( &lt; 36,0°C )</li>
+                        <li>Détection d'une eau trop chaude ( &gt; 39,0°C )</li>
+                        <li>Bonne autonomie ( &gt; 24h de fonctionnement)</li>
+                        <li>Prix d'acquisition faible de type « discount » ( &lt; 20 €)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="anime-section delay-3">
+                <h2>Mon ressenti</h2>
+                <div class="bloc-texte">
+                    <p>J'ai beaucoup aimé ce projet car on voit tout le produit en détail et on finit par le connaître parfaitement, même les parties réalisées par mes camarades. C'est un projet simple, pas trop poussé, mais très bien à faire pour un premier projet où nous sommes lâchés en autonomie.</p>
+                </div>
+            </div>
+
+            <div class="anime-section delay-3">
+                <h2>Logiciels & Technologies utilisés</h2>
+                <div class="tags-container">
+                    <span class="tag">Proteus : ISIS, ARES</span>
+                </div>
+            </div>
+
+            <div class="anime-section delay-3">
+                <h2>Documents livrables</h2>
+                <div class="documents-grid">
+                    <a href="DDC_TDB.docx" target="_blank" class="doc-btn">📄 DDC</a>
+                    <a href="DDV_TDB.docx" target="_blank" class="doc-btn">📄 DDV</a>
+                    <a href="DDF_TDB.docx" target="_blank" class="doc-btn">📄 DDF</a>
+                    <a href="planningtdb.xlsx" target="_blank" class="doc-btn">📅 Planning</a>
+                </div>
+            </div>
+
+            <div class="anime-section delay-4">
+                <h2>Galerie du projet</h2>
+                <div class="galerie-media">
+                    
+                    <div class="conteneur-image">
+                        <img src="fabrication-projet2-planmasse.jpeg" alt="Plan de masse">
+                        <div class="description-image">Plan de Masse de la Carte</div>
+                    </div>
+
+                    <div class="conteneur-image">
+                        <img src="projet2-1.jpeg" alt="Carte terminée">
+                        <div class="description-image">Carte Terminée sans l'AOP</div>
+                    </div>                
+                    
+                    <div class="conteneur-image">
+                        <img src="projet2-2.jpeg" alt="Test étuve">
+                        <div class="description-image">Test Température sous l'étuve</div>
+                    </div>                 
+                    
+                    <div class="conteneur-image">
+                        <img src="projet2-3.jpeg" alt="Test tension">
+                        <div class="description-image">Test de Tension</div>
+                    </div>                  
+                    
+                    <div class="conteneur-image">
+                        <img src="projet2-carte.jpeg" alt="Carte">
+                        <div class="description-image">Carte</div>
+                    </div> 
+
+                    <div class="conteneur-image">
+                        <img src="projet2-test (2).jpeg" alt="Mesure">
+                        <div class="description-image">Mesure de la carte</div>
+                    </div>        
+
+                    <div class="conteneur-image">
+                        <img src="projet2-test.jpeg" alt="Test 1">
+                        <div class="description-image">Test de la carte</div>
+                    </div>           
+
+                    <div class="conteneur-image">
+                        <img src="projet2-test3.jpeg" alt="Test 2">
+                        <div class="description-image">Test de la carte</div>
+                    </div>  
+
+                    <div class="conteneur-image">
+                        <img src="sae-fabrication-projet2.jpeg" alt="Fabrication">
+                        <div class="description-image">Fabrication de la carte</div>
+                    </div>                  
+                    
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

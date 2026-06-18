@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets Personnels & Loisirs - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- STYLES GENERAUX DE LA PAGE (THEME CLAIR) --- */
+        body {
+            background-color: #f8f9fa; 
+            color: #333333;            
+        }
+
+        .conteneur h1 {
+            color: #30b57e; 
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .section-detail h2 {
+            text-align: center;
+            margin-top: 40px;
+            padding-bottom: 10px; 
+            color: #30b57e; 
+        }
+
+
+
+        /* --- BLOCS DE TEXTE ET PROJETS --- */
+        .bloc-projet {
+            background-color: #ffffff; 
+            color: #333333;            
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+            border-left: 5px solid #30b57e; 
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .bloc-projet h3 {
+            margin-top: 0;
+            color: #222222;
+            font-size: 1.3em;
+        }
+
+        .badge-technique {
+            display: inline-block;
+            background-color: rgba(48, 181, 126, 0.1);
+            color: #176bcc;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Style pour l'image du projet perso */
+        .image-projet-perso {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        /* --- GRILLE ET CARTES SPORTIVES --- */
+        .grille-sports {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .carte-sport {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .carte-sport:hover {
+            transform: translateY(-5px);
+            border-color: #30b57e;
+        }
+
+        .carte-sport h3 {
+            margin: 0 0 10px 0;
+            color: #30b57e;
+        }
+
+        .duree-sport {
+            font-weight: bold;
+            color: #222222;
+            font-size: 1.1em;
+        }
+
+        .description-sport {
+            font-size: 0.9em;
+            color: #666666;
+            margin-top: 5px;
+        }
+
+        /* --- CARTE COMMENCEMENT ORANGE (COMPÉTENCE DÉLIVRÉE) --- */
+        .carte-sport.orange-delivre {
+            border: 2px solid #df6c0e;
+            background-color: #fffbf7;
+        }
+        
+        .carte-sport.orange-delivre:hover {
+            box-shadow: 0 6px 15px rgba(223, 108, 14, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .badge-delivre {
+            display: inline-block;
+            background-color: #df6c0e;
+            color: #ffffff;
+            font-size: 0.75em;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* --- BOUTON STRAVA --- */
+        .btn-strava {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #fc4c02; /* Couleur officielle Strava */
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-strava:hover {
+            background-color: #e24100;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="sae.html">Projets formation</a></li>
+            <li><a href="projets-perso.html" class="actif">Projets personnel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteneur-detail">
+        <h1>Projets Personnels & Loisirs</h1>
+        
+        <p class="introduction">Au-delà de ma formation universitaire en GEII, j'aime appliquer mes connaissances techniques sur mon temps libre à travers des projets concrets et maintenir un équilibre dynamique grâce au sport.</p>
+    
+
+
+    
+
+        <section class="section-detail">
+            <h2>Mes Initiatives Personnelles</h2>
+            
+            <div class="bloc-projet">
+                <h3>Réparation d'un contrôleur de scooter électrique</h3>
+                <span class="badge-technique">Électronique de puissance & Diagnostic</span>
+                <p>
+                    Suite à une panne matérielle, le contrôleur de mon scooter électrique a cessé de fonctionner. Plutôt que de le remplacer directement, j'ai choisi de mettre à profit mes compétences en électronique pour diagnostiquer la panne pendant mon temps libre.
+                </p>
+                <p>
+                    <strong>Démarche actuelle :</strong> Analyse du circuit de puissance, tests des composants (MOSFETs, condensateurs) à l'aide d'un multimètre et d'un oscilloscope pour identifier l'origine du dysfonctionnement (surtension ou composant défectueux) et procéder à sa soudure et réparation.
+                </p>
+                <div class="galerie-media">
+                     <div class="conteneur-image">
+                        <img src="1.jpeg" alt="Scooter démonté">
+                        <div class="description-image">Scooter démonté</div>
+                    </div>
+
+                    <div class="conteneur-image">
+                        <img src="2.jpeg" alt="Carte terminée">
+                        <div class="description-image">Convertisseur 48V - 12V</div>
+                    </div>                    
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section-detail">
+            <h2>Cursus Sportif & Loisirs</h2>
+            <p>
+                Le sport occupe une place importante dans mon quotidien, m'apportant rigueur, esprit d'équipe et endurance.
+            </p>
+
+            <div class="grille-sports">
+                
+                <div class="carte-sport" style="border: 2px solid #f59e0b; background-color: #fffbeb;">
+                    <h3 style="color: #f59e0b;">Rugby</h3>
+                    <div class="duree-sport">2 ans</div>
+                    <div class="description-sport">Développement de l'esprit d'équipe, de la cohésion et du dépassement de soi.</div>
+                </div>
+
+                <div class="carte-sport" style="border: 2px solid #f59e0b; background-color: #fffbeb;">
+                    <h3 style="color: #f59e0b;">Tennis</h3>
+                    <div class="duree-sport">2 ans</div>
+                    <div class="description-sport">Travail de la concentration, de la gestion du stress et de la réactivité individuelle.</div>
+                </div>
+
+                <div class="carte-sport" style="border: 2px solid #f59e0b; background-color: #fffbeb;">
+                    <h3 style="color: #f59e0b;">Basket</h3>
+                    <div class="duree-sport">1 an</div>
+                    <div class="description-sport">Amélioration de l'agilité, de la vision du jeu et de la communication sur le terrain.</div>
+                </div>
+
+                <div class="carte-sport" style="border: 2px solid #f59e0b; background-color: #fffbeb;">
+                    <h3 style="color: #f59e0b;">Football</h3>
+                    <div class="duree-sport">1 an</div>
+                    <div class="description-sport">Sens de la stratégie collective et maintien d'une bonne condition physique.</div>
+                </div>
+
+                <div class="carte-sport orange-delivre">
+                    <span class="badge-delivre"><i class="fa-solid fa-award"></i> Compétence validée</span>
+                    <h3 style="color: #df6c0e;">Course à pied</h3>
+                    <div class="duree-sport" style="color: #df6c0e;">Débutant (Objectif Semi-marathon)</div>
+                    <div class="description-sport">Nouvel objectif personnel axé sur l'endurance, la discipline et la gestion de l'effort. Premier palier des 10km franchi.</div>
+                    
+                    <a href="https://strava.app.link/XL45QTFg13b" target="_blank" class="btn-strava">
+                        <i class="fa-brands fa-strava"></i> Voir mon profil Strava
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
