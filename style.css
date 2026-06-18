@@ -1,0 +1,963 @@
+/* =========================================
+   VARIABLES & IMPORTATIONS
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap');
+
+:root {
+    --couleur-primaire: #30b57e; /* Modifié : Vert dynamique #30b57e */
+    --couleur-secondaire: #1e293b; /* Bleu nuit/Gris foncé */
+    --couleur-fond: #f8fafc; /* Gris très clair */
+    --couleur-texte: #334155;
+    --couleur-texte-clair: #64748b;
+    --blanc: #ffffff;
+    --ombre-legere: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ombre-forte: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --transition-douce: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   STYLES DE BASE ET ANIMATIONS
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    line-height: 1.6;
+    /* Animation d'apparition au chargement de la page */
+    animation: apparitionDouce 0.8s ease-out forwards;
+}
+
+@keyframes apparitionDouce {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+    color: var(--couleur-secondaire);
+    font-weight: 600;
+}
+
+/* =========================================
+   BARRE DE NAVIGATION (FIXE & MODERNE)
+   ========================================= */
+.navbar {
+    background-color: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px); /* Effet de verre dépoli */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: var(--ombre-legere);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    color: var(--blanc);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05em;
+    padding: 8px 12px;
+    position: relative;
+    transition: var(--transition-douce);
+}
+
+/* Soulignement animé au survol */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--couleur-primaire);
+    transition: var(--transition-douce);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.navbar a:hover::after, .navbar a.actif::after {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: #a3ebd0; /* Modifié : Vert très clair au lieu de bleu clair */
+}
+
+/* =========================================
+   CONTENEURS PRINCIPAUX (PAGES)
+   ========================================= */
+.conteneur, .conteneur-detail {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: var(--blanc);
+    border-radius: 12px;
+    box-shadow: var(--ombre-legere);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.introduction {
+    font-size: 1.15em;
+    color: var(--couleur-texte-clair);
+    border-left: 4px solid var(--couleur-primaire);
+    padding-left: 20px;
+    margin: 20px 0 40px 0;
+    font-style: italic;
+    background-color: #f1f5f9;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* =========================================
+   BOUTONS & LIENS DIVERS
+   ========================================= */
+.bouton-retour {
+    display: inline-block;
+    color: var(--blanc);
+    background-color: var(--couleur-secondaire);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 30px;
+    transition: var(--transition-douce);
+    box-shadow: var(--ombre-legere);
+}
+
+.bouton-retour:hover {
+    background-color: var(--couleur-primaire);
+    transform: translateX(-5px);
+}
+
+/* =========================================
+   GRILLE DES COMPÉTENCES & CARTES INTERACTIVES
+   ========================================= */
+.grille-competences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.carte {
+    background: linear-gradient(135deg, var(--blanc) 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 50px 20px;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-douce);
+    box-shadow: var(--ombre-legere);
+}
+
+.carte h2 {
+    font-size: 1.8em;
+    margin: 0;
+    color: var(--couleur-secondaire);
+    transition: var(--transition-douce);
+    z-index: 2;
+}
+
+.carte:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--ombre-forte);
+    border-color: var(--couleur-primaire);
+}
+
+.carte:hover h2 {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Infobulle élégante au survol */
+.infobulle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--couleur-secondaire) 0%, #0f172a 100%);
+    color: var(--blanc);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-douce);
+    text-align: left;
+    font-size: 0.95em;
+    z-index: 3;
+}
+
+.carte:hover .infobulle {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.infobulle p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.infobulle strong {
+    color: #a3ebd0; /* Modifié : Vert clair pour faire ressortir les mots-clés */
+}
+
+/* =========================================
+   PAGES DE DÉTAILS (SAE, Automatisme, etc.)
+   ========================================= */
+.section-detail {
+    margin-top: 50px;
+}
+
+.section-detail h2 {
+    font-size: 1.6em;
+    color: var(--couleur-primaire);
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.section-detail ul {
+    list-style-type: none;
+}
+
+.section-detail ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+/* Puces personnalisées pour les listes */
+.section-detail ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--couleur-primaire);
+    font-size: 1.5em;
+    line-height: 1;
+    top: 0;
+}
+
+/* =========================================
+   IMAGES ET GALERIES
+   ========================================= */
+.grille-projets, .grille-images-simples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.projet-bloc, .projet-focus {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 25px;
+    transition: var(--transition-douce);
+}
+
+.projet-bloc:hover {
+    box-shadow: var(--ombre-legere);
+    transform: translateY(-5px);
+}
+
+.projet-bloc h3 {
+    margin-bottom: 15px;
+    color: var(--couleur-secondaire);
+}
+
+.image-projet, .image-galerie {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Recadre l'image proprement sans la déformer */
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: var(--ombre-legere);
+    transition: var(--transition-douce);
+}
+
+.image-projet:hover, .image-galerie:hover {
+    transform: scale(1.03); /* Zoom très léger au survol */
+    box-shadow: var(--ombre-forte);
+}
+
+/* =========================================
+   FORMULAIRE DE CONTACT
+   ========================================= */
+.formulaire-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f8fafc;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.formulaire-contact input, .formulaire-contact textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    transition: var(--transition-douce);
+    outline: none;
+    background-color: var(--blanc);
+}
+
+.formulaire-contact input:focus, .formulaire-contact textarea:focus {
+    border-color: var(--couleur-primaire);
+    box-shadow: 0 0 0 4px rgba(48, 181, 126, 0.1); /* Modifié : Halo vert au focus */
+}
+
+.formulaire-contact button {
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+    border: none;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-douce);
+}
+
+.formulaire-contact button:hover {
+    background-color: #248c61; /* Modifié : Vert plus foncé au survol */
+    transform: translateY(-2px);
+    box-shadow: var(--ombre-legere);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobiles et Tablettes)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .conteneur, .conteneur-detail {
+        margin: 20px;
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .carte {
+        min-height: 150px;
+    }
+}
+
+/* --- GALERIE MEDIA DES PROJETS --- */
+.galerie-media {
+    display: grid;
+    /* Crée des colonnes qui s'adaptent automatiquement : minimum 250px de large */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; /* Espace entre les photos/vidéos */
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.galerie-media img,
+.galerie-media video {
+    width: 100%; /* Prend toute la largeur de sa colonne */
+    height: 100%;
+    max-height: 300px; /* Limite la hauteur pour que tout soit homogène */
+    object-fit: cover; /* Recadre l'image proprement sans l'écraser */
+    border-radius: 8px; /* Bords légèrement arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Petite ombre légère */
+    transition: transform 0.3s ease; /* Animation pour le survol */
+}
+
+/* Petit effet de zoom quand on passe la souris sur une vidéo */
+.galerie-media img:hover,
+.galerie-media video:hover {
+    transform: scale(1.03);
+}
+
+/* --- GALERIE MEDIA DES PROJETS (AVEC EFFET OVERLAY) --- */
+.galerie-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* La boîte qui contient l'image et le texte */
+.conteneur-image {
+    position: relative; /* Permet de placer le texte par-dessus l'image */
+    overflow: hidden; /* Cache tout ce qui dépasse de la boîte */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.conteneur-image img {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease; /* Animation fluide pour le zoom */
+}
+
+/* Le texte de description */
+.description-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.75); /* Fond noir semi-transparent */
+    color: #ffffff; /* Texte en blanc */
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    transform: translateY(100%); /* Décale le texte en bas (hors de l'image) par défaut */
+    transition: transform 0.4s ease; /* Animation fluide pour la remontée */
+}
+
+/* --- EFFETS AU SURVOL --- */
+
+/* Zoom l'image */
+.conteneur-image:hover img {
+    transform: scale(1.05); 
+}
+
+/* Fait remonter le texte */
+.conteneur-image:hover .description-image {
+    transform: translateY(0); 
+}
+
+.en-tete-projets {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bouton-youtube {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ff0000;
+    color: var(--blanc);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: var(--transition-douce);
+    box-shadow: var(--ombre-legere);
+}
+
+.bouton-youtube:hover {
+    background-color: #cc0000;
+    transform: translateY(-3px);
+    box-shadow: var(--ombre-forte);
+    color: var(--blanc);
+}
+
+/* Styles pour rendre les vidéos YouTube "Responsive" (adaptables aux écrans) */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 parfait pour YouTube */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: var(--ombre-legere);
+    background-color: #000; /* Fond noir pendant le chargement */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.en-tete-profil {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, var(--blanc) 0%, #f1f5f9 100%);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--ombre-legere);
+    border: 1px solid #e2e8f0;
+}
+
+.photo-profil {
+    width: 180px; 
+    height: 180px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 5px solid var(--blanc); 
+    box-shadow: var(--ombre-forte);
+}
+
+.texte-profil h2 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
+    color: var(--couleur-secondaire);
+}
+
+.etiquette-statut {
+    display: inline-block;
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.citation-profil {
+    font-size: 1.1em;
+    color: var(--couleur-texte-clair);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* --- Styles de la frise chronologique --- */
+.frise-chronologique {
+    position: relative;
+    max-width: 850px;
+    margin: 40px auto;
+    padding-left: 40px;
+    border-left: 4px solid var(--couleur-primaire);
+}
+
+.etape-frise {
+    position: relative;
+    margin-bottom: 50px;
+    animation: apparitionDouce 0.8s ease-out forwards;
+}
+
+.icone-frise {
+    position: absolute;
+    left: -62px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    box-shadow: 0 0 0 6px var(--blanc), var(--ombre-legere);
+    z-index: 2;
+    transition: var(--transition-douce);
+}
+
+.etape-frise:hover .icone-frise {
+    transform: scale(1.1) rotate(10deg);
+    background-color: var(--couleur-secondaire);
+}
+
+.date-frise {
+    display: inline-block;
+    color: var(--couleur-primaire);
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.contenu-frise {
+    background-color: var(--blanc);
+    border: 1px solid #e2e8f0;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--ombre-legere);
+    transition: var(--transition-douce);
+    position: relative;
+}
+
+.contenu-frise::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #e2e8f0 transparent transparent;
+}
+
+.contenu-frise::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 15px;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--blanc) transparent transparent;
+}
+
+.contenu-frise:hover {
+    box-shadow: var(--ombre-forte);
+    border-color: var(--couleur-primaire);
+    transform: translateX(5px);
+}
+
+.contenu-frise h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.contenu-frise p {
+    margin-bottom: 8px;
+    color: var(--couleur-texte);
+}
+
+.lieu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--couleur-texte-clair);
+    font-size: 0.9em;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+}
+
+/* --- Badges de Soft Skills --- */
+.grille-savoir-etre {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.badge-skill {
+    background-color: #d1fae5; /* Modifié : Fond vert clair */
+    color: #065f46;            /* Modifié : Texte vert sombre */
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-douce);
+}
+
+.badge-skill:hover {
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+    transform: translateY(-3px);
+}
+
+.section-actualites {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 2px dashed #e2e8f0;
+    text-align: left;
+}
+
+.titre-actu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.8em;
+    color: var(--couleur-secondaire);
+    margin-bottom: 30px;
+}
+
+.icone-pulse {
+    color: #ef4444; /* Rouge vif pour le côté "Live/Actu" */
+    animation: pulsation 2s infinite;
+}
+
+@keyframes pulsation {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Liste des notifications */
+.liste-notifications {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #f8fafc;
+    border-left: 5px solid var(--couleur-primaire);
+    padding: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--couleur-texte);
+    transition: var(--transition-douce);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.notification:hover {
+    background-color: var(--blanc);
+    transform: translateX(10px); /* Glisse vers la droite au survol */
+    box-shadow: var(--ombre-legere);
+    border-color: #30b57e; /* Modifié : Changé pour ta couleur verte */
+}
+
+.notif-icone {
+    width: 45px;
+    height: 45px;
+    background-color: #d1fae5; /* Modifié : Fond vert clair */
+    color: var(--couleur-primaire);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.notification:hover .notif-icone {
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+    transition: var(--transition-douce);
+}
+
+.notif-contenu {
+    flex: 1;
+}
+
+.notif-date {
+    font-size: 0.85em;
+    color: var(--couleur-texte-clair);
+    font-weight: 600;
+    margin-bottom: 3px;
+    display: block;
+}
+
+.notif-titre {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--couleur-secondaire);
+    margin: 0 0 5px 0;
+}
+
+.notif-desc {
+    font-size: 0.95em;
+    margin: 0;
+    color: var(--couleur-texte);
+}
+
+.notif-fleche {
+    color: var(--couleur-texte-clair);
+    font-size: 1.2em;
+    transition: var(--transition-douce);
+}
+
+.notification:hover .notif-fleche {
+    color: var(--couleur-primaire);
+    transform: translateX(5px);
+}
+
+.entete-contact {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.entete-contact h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.entete-contact p {
+    color: var(--couleur-texte-clair);
+    font-size: 1.1em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Disposition en 2 colonnes (Infos / Formulaire) */
+.grille-contact {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* --- Colonne de gauche : Coordonnées --- */
+.coordonnees-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.carte-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--blanc);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--ombre-legere);
+    transition: var(--transition-douce);
+    text-decoration: none;
+    color: var(--couleur-texte);
+}
+
+.carte-info:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ombre-forte);
+    border-color: var(--couleur-primaire);
+}
+
+.carte-info .icone-cercle {
+    width: 50px;
+    height: 50px;
+    background-color: #e6f7f0; /* Modifié : Fond vert ultra-clair */
+    color: var(--couleur-primaire);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    transition: var(--transition-douce);
+    flex-shrink: 0;
+}
+
+.carte-info:hover .icone-cercle {
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+}
+
+.carte-info div h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: var(--couleur-secondaire);
+}
+
+.carte-info div p {
+    margin: 0;
+    color: var(--couleur-texte-clair);
+    font-size: 0.95em;
+}
+
+/* --- Colonne de droite : Formulaire amélioré --- */
+.boite-formulaire {
+    background: var(--blanc);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--ombre-legere);
+    border: 1px solid #e2e8f0;
+}
+
+.boite-formulaire h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+/* Le style des champs est déjà géré par .formulaire-contact dans style.css */
+.formulaire-contact {
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    max-width: 100%;
+}
+
+/* Rendre la grille responsive pour les téléphones */
+@media screen and (max-width: 900px) {
+    .grille-contact {
+        grid-template-columns: 1fr; /* Passe sur 1 seule colonne */
+    }
+}
+
+/* --- Styles pour les petits tags dans les cartes de projets --- */
+.conteneur-tags {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux tags de passer à la ligne s'il y en a trop */
+    gap: 8px; /* Espace entre chaque tag */
+    margin: 15px 0; /* Espace au-dessus et en dessous de la zone des tags */
+}
+
+.tag-mini {
+    background-color: #e6f7f0; /* Modifié : Fond vert très clair */
+    color: var(--couleur-primaire); /* Texte en vert */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Espace entre l'icône et le texte */
+    transition: var(--transition-douce);
+} 
+
+/* Petit effet au survol du tag */
+.projet-bloc:hover .tag-mini {
+    background-color: var(--couleur-primaire);
+    color: var(--blanc);
+}
+
+.tag-mini {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.tag-mini i {
+    margin-right: 6px;
+}
+
+.projet-bloc, .projet-focus {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0; /* Passé de 1px à 2px */
+    border-radius: 12px;
+    padding: 25px;
+    transition: var(--transition-douce);
+}
+
+/* 2. Au survol, la bordure reste à 2px mais change de couleur */
+.projet-bloc:hover {
+    box-shadow: var(--ombre-legere);
+    transform: translateY(-5px);
+    border-color: var(--couleur-primaire); /* Devient verte et plus visible */
+}
+
